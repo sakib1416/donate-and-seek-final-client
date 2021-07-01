@@ -1,30 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { UserContext } from '../../../App';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from "react-hook-form";
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 const AddDonation = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const history = useHistory();
+    const [imageURL, setIMageURL] = useState(null);
     console.log(loggedInUser.name, loggedInUser.email);
     const submitForm = data => {
         console.log(loggedInUser.name, loggedInUser.email);
-        const formData = new FormData()
-        formData.append('file', data.picture[0]);
-        formData.append('name', data.name);
-        formData.append('description', data.description);
-        formData.append('location', data.location);
-        formData.append('categories', data.categories);
-        formData.append('delivery', data.delivery);
-        formData.append('donorName', loggedInUser.name);
-        formData.append('donorEmail', loggedInUser.email);
-        console.log(formData);
+        data.created = new Date();
+        data.imageURL = imageURL;
+        data.donorName = loggedInUser.name;
+        data.donorEmail = loggedInUser.email;
+        console.log(data);
+        // const formData = new FormData()
+        // formData.append('file', data.picture[0]);
+        // formData.append('name', data.name);
+        // formData.append('description', data.description);
+        // formData.append('location', data.location);
+        // formData.append('categories', data.categories);
+        // formData.append('delivery', data.delivery);
+        // formData.append('donorName', loggedInUser.name);
+        // formData.append('donorEmail', loggedInUser.email);
+        // console.log(formData);
         fetch("http://localhost:5000/addDonation", {
             method: "POST",
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(result => {
@@ -34,6 +44,25 @@ const AddDonation = () => {
         .catch(error => {
             console.error(error)
         })
+    }
+    
+    const handleImageUpload = event => {
+        console.log(event.target.files[0]);
+        const imageData = new FormData();
+        imageData.set('key', 'c38dba077359c836d33630b68d8f48c1');
+        imageData.append('image', event.target.files[0]);
+        console.log(imageData);
+        axios.post('https://api.imgbb.com/1/upload', 
+        imageData)
+        .then(function (response) {
+          console.log(response);
+          setIMageURL(response.data.data.display_url);
+          console.log(imageURL);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    
     }
     return (
         <div>
@@ -76,8 +105,8 @@ const AddDonation = () => {
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Upload Picture</label>
-                                            <input type="file" class="form-control" {...register("picture")} placeholder="picture"/>
-                                            {errors.exampleRequired && <span>This field is required</span>}
+                                            <input type="file" class="form-control" onChange={handleImageUpload} name="picture"  placeholder="picture"/>
+                                            {/* {errors.exampleRequired && <span>This field is required</span>} {...register("picture")} */}
                                         </div>
                                         <div style={{fontSize: '16px'}}>
                                             <div class="input-group mb-3">

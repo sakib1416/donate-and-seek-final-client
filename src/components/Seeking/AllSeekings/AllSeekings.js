@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AllSeekings = (props) => {
-    const {name, description, location, categories, delivery, img, seekerName} = props.seek;
+    const {name, description, location, categories, delivery, imageURL, seekerName} = props.seek;
     return (
         <div>
             <article class="blog_item">
                 <div class="blog_item_img">
-                    <img class="card-img rounded-0" src={`http://localhost:5000/${img}`} alt=""/>
+                    <img class="card-img rounded-0" src={imageURL} alt=""/>
                         <a href="#" class="blog_item_date">
                             <h3>15</h3>
                             <p>Jan</p>

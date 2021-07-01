@@ -1,35 +1,63 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Navbar from '../../Shared/Navbar/Navbar';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../App';
 import { useHistory } from 'react-router';
+import axios from 'axios';
 
 const AddSeeking = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const history = useHistory();
+    const [imageURL, setIMageURL] = useState(null);
     const submitForm = (data) => {
+        data.created = new Date();
+        data.imageURL = imageURL;
+        data.seekerName = loggedInUser.name;
+        data.seekerEmail = loggedInUser.email;
         console.log(data);
         console.log(loggedInUser.name, loggedInUser.email);
-        const formData = new FormData()
-        formData.append('file', data.picture[0]);
-        formData.append('name', data.name);
-        formData.append('description', data.description);
-        formData.append('location', data.location);
-        formData.append('categories', data.categories);
-        formData.append('delivery', data.delivery);
-        formData.append('seekerName', loggedInUser.name);
-        formData.append('seekerEmail', loggedInUser.email);
+        // const formData = new FormData()
+        // formData.append('file', data.picture[0]);
+        // formData.append('name', data.name);
+        // formData.append('description', data.description);
+        // formData.append('location', data.location);
+        // formData.append('categories', data.categories);
+        // formData.append('delivery', data.delivery);
+        // formData.append('seekerName', loggedInUser.name);
+        // formData.append('seekerEmail', loggedInUser.email);
         fetch("http://localhost:5000/addSeek", {
             method: "POST",
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
         })
         .then(response => response.json())
         .then(result => {
             console.log(result);
             history.push("/seeking")
         })
+    }
+
+    const handleImageUpload = event => {
+        console.log(event.target.files[0]);
+        const imageData = new FormData();
+        imageData.set('key', 'c38dba077359c836d33630b68d8f48c1');
+        imageData.append('image', event.target.files[0]);
+        console.log(imageData);
+        axios.post('https://api.imgbb.com/1/upload', 
+        imageData)
+        .then(function (response) {
+          console.log(response);
+          setIMageURL(response.data.data.display_url);
+          console.log(imageURL);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    
     }
     return (
         <div>
@@ -72,8 +100,8 @@ const AddSeeking = () => {
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Upload Picture</label>
-                                            <input type="file" class="form-control" {...register("picture")} placeholder="picture"/>
-                                            {errors.exampleRequired && <span>This field is required</span>}
+                                            <input type="file" onChange={handleImageUpload}  class="form-control" name="picture"  placeholder="picture"/>
+                                            {/* {errors.exampleRequired && <span>This field is required</span>} {...register("picture")} */}
                                         </div>
                                         <div style={{fontSize: '16px'}}>
                                             <div class="input-group mb-3">

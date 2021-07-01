@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewsAndUpdates = () => {
     return (
@@ -29,7 +30,7 @@ const NewsAndUpdates = () => {
                                             surge in popularity during the 
                                             1960s when used it on their  
                                             sheets, and again.</p>
-                                        <a class="read_more" href="single-blog.html">Read More</a>
+                                        <Link to="/aids" class="read_more">Read More</Link>
                                     </div>
                                 </div>
                                 <div class="single__blog d-flex align-items-center">
@@ -46,7 +47,7 @@ const NewsAndUpdates = () => {
                                             surge in popularity during the 
                                             1960s when used it on their  
                                             sheets, and again.</p>
-                                        <a class="read_more" href="single-blog.html">Read More</a>
+                                        <Link to="/aids" class="read_more">Read More</Link>
                                     </div>
                                 </div>
                             </div>

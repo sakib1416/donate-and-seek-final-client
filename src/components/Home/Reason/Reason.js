@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Reason = () => {
     return (
@@ -25,7 +26,7 @@ const Reason = () => {
                                     <p>Lorem ipsum, or lipsum as it is 
                                         sometimes known, is dummy 
                                         text used in laying out print.</p>
-                                    <a href="#" class="read_more">Read More</a>
+                                    <Link to="/aids" class="read_more">Read More</Link>
                                 </div>
                             </div>
                         </div>
@@ -41,7 +42,7 @@ const Reason = () => {
                                     <p>Lorem ipsum, or lipsum as it is 
                                         sometimes known, is dummy 
                                         text used in laying out print.</p>
-                                    <a href="#" class="read_more">Read More</a>
+                                    <Link to="/aids" class="read_more">Read More</Link>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +58,7 @@ const Reason = () => {
                                     <p>Lorem ipsum, or lipsum as it is 
                                         sometimes known, is dummy 
                                         text used in laying out print.</p>
-                                    <a href="#" class="read_more">Read More</a>
+                                    <Link to="/aids" class="read_more">Read More</Link>
                                 </div>
                             </div>
                         </div>

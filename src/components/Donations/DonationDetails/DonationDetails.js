@@ -45,7 +45,7 @@ const DonationDetails = () => {
                             <div class="col-lg-8 posts-list">
                             <div class="single-post">
                                 <div class="feature-img">
-                                    <img class="img-fluid" src={`http://localhost:5000/${donation.img}`} alt=""/>
+                                    <img class="img-fluid" src={donation.imageURL} alt=""/>
                                 </div>
                                 <div class="blog_details">
                                     <h2>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LatestActivity = () => {
     return (
@@ -25,7 +26,8 @@ const LatestActivity = () => {
                                     enim minim veniam, quis nostrud exercitation. tempor 
                                     incididunt  ut labore dolore magna aliqua. enim minim 
                                     veniam, quis nostrud exercitation.</p>
-                                <a href="#" data-scroll-nav='1' class="boxed-btn4">Donate Now</a>
+                                
+                                <Link to="/addDonation" class="boxed-btn4">Donate Now</Link>
                             </div>
                         </div>
                     </div>

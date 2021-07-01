@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PopularCauses = () => {
     return (
@@ -17,7 +18,7 @@ const PopularCauses = () => {
                             <div class="causes_active owl-carousel">
                                 <div class="single_cause">
                                     <div class="thumb">
-                                        <img src="img/causes/1.png" alt=""/>
+                                        <img src="/img/causes/1.png" alt=""/>
                                     </div>
                                     <div class="causes_content">
                                         <div class="custom_progress_bar">
@@ -37,12 +38,12 @@ const PopularCauses = () => {
                                         <p>The passage is attributed to an 
                                             unknown typesetter in the century 
                                             who is thought</p>
-                                        <a class="read_more" href="cause_details.html">Read More</a>
+                                        <Link to="/aids" class="read_more">Read More</Link>
                                     </div>
                                 </div>
                                 <div class="single_cause">
                                     <div class="thumb">
-                                        <img src="img/causes/2.png" alt=""/>
+                                        <img src="/img/causes/2.png" alt=""/>
                                     </div>
                                     <div class="causes_content">
                                         <div class="custom_progress_bar">
@@ -62,12 +63,12 @@ const PopularCauses = () => {
                                         <p>The passage is attributed to an 
                                             unknown typesetter in the century 
                                             who is thought</p>
-                                        <a class="read_more" href="cause_details.html">Read More</a>
+                                        <Link to="/aids" class="read_more">Read More</Link>
                                     </div>
                                 </div>
                                 <div class="single_cause">
                                     <div class="thumb">
-                                        <img src="img/causes/3.png" alt=""/>
+                                        <img src="/img/causes/3.png" alt=""/>
                                     </div>
                                     <div class="causes_content">
                                         <div class="custom_progress_bar">
@@ -92,7 +93,7 @@ const PopularCauses = () => {
                                 </div>
                                 <div class="single_cause">
                                     <div class="thumb">
-                                        <img src="img/causes/1.png" alt=""/>
+                                        <img src="/img/causes/1.png" alt=""/>
                                     </div>
                                     <div class="causes_content">
                                         <div class="custom_progress_bar">
@@ -112,7 +113,7 @@ const PopularCauses = () => {
                                         <p>The passage is attributed to an 
                                             unknown typesetter in the century 
                                             who is thought</p>
-                                        <a class="read_more" href="cause_details.html">Read More</a>
+                                        <Link to="/aids" class="read_more">Read More</Link>
                                     </div>
                                 </div>
                             </div>
