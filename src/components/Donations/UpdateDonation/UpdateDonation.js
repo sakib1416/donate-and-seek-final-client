@@ -10,7 +10,7 @@ const UpdateDonation = () => {
     const history = useHistory();
     const [updateData, setUpdateData] = useState({});
     useEffect(()=>{
-        fetch("http://localhost:5000/donation/"+id)
+        fetch("https://donateandseek.herokuapp.com/donation/"+id)
         .then(response => response.json())
         .then(result => setUpdateData(result))
     }, [])
@@ -22,7 +22,7 @@ const UpdateDonation = () => {
             categories: data.categories,
             delivery: data.delivery
         };
-        fetch("http://localhost:5000/update/donation/"+id, {
+        fetch("https://donateandseek.herokuapp.com/update/donation/"+id, {
             method: "PATCH",
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify(donation)

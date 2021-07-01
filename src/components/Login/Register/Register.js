@@ -23,7 +23,7 @@ const Register = () => {
 
                 //adding the user in the database
                 const user = {name, email: data.email};
-                fetch("http://localhost:5000/addUser", {
+                fetch("https://donateandseek.herokuapp.com/addUser", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'

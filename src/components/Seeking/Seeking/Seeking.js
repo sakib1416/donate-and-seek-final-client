@@ -6,7 +6,7 @@ import AllSeekings from '../AllSeekings/AllSeekings';
 const Seeking = () => {
     const [seekings, setSeekings] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/seekings")
+        fetch("https://donateandseek.herokuapp.com/seekings")
         .then(response => response.json())
         .then(result => {
             console.log(result);

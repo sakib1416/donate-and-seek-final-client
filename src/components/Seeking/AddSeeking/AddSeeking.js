@@ -27,7 +27,7 @@ const AddSeeking = () => {
         // formData.append('delivery', data.delivery);
         // formData.append('seekerName', loggedInUser.name);
         // formData.append('seekerEmail', loggedInUser.email);
-        fetch("http://localhost:5000/addSeek", {
+        fetch("https://donateandseek.herokuapp.com/addSeek", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

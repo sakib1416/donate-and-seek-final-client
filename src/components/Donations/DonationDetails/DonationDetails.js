@@ -11,12 +11,12 @@ const DonationDetails = () => {
     const {id} = useParams();
     const [donation, setDonation] = useState({});
     useEffect(()=>{
-        fetch("http://localhost:5000/donation/"+id)
+        fetch("https://donateandseek.herokuapp.com/donation/"+id)
         .then(response => response.json())
         .then(result => setDonation(result))
     }, [])
     const deleteDonation = (id) => {
-        fetch("http://localhost:5000/delete/donation/"+id, {
+        fetch("https://donateandseek.herokuapp.com/delete/donation/"+id, {
             method: "DELETE"
         })
         .then(response => response.json())

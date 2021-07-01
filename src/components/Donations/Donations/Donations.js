@@ -6,7 +6,7 @@ import DonationCards from '../DonationCards/DonationCards';
 const Donations = () => {
     const [donations, setDonations] = useState([]);
     useEffect(()=>{
-        fetch("http://localhost:5000/donations")
+        fetch("https://donateandseek.herokuapp.com/donations")
         .then(response => response.json())
         .then(data => {
             console.log(data);

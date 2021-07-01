@@ -10,14 +10,14 @@ const SeekingDetails = () => {
     const {id} = useParams();
     const [seek, setSeek] = useState({});
     useEffect(()=>{
-        fetch("http://localhost:5000/seeking/"+id)
+        fetch("https://donateandseek.herokuapp.com/seeking/"+id)
         .then(response => response.json())
         .then(result => setSeek(result))
     }, [])
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const deleteSeeking = (id) => {
-        fetch("http://localhost:5000/delete/seeking/"+id, {
+        fetch("https://donateandseek.herokuapp.com/delete/seeking/"+id, {
             method: "DELETE"
         })
         .then(response => response.json())
