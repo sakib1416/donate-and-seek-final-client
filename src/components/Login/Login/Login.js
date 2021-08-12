@@ -107,8 +107,8 @@ const Login = () => {
                             </div>
                         </div>
                     </div>
-                </section>
-                <Footer></Footer>
+            </section>
+            <Footer></Footer>
         </div>
     );
 };
